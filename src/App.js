@@ -4,7 +4,8 @@ import Square from './components/Square/Square';
 
 const App = () => {
 
-  const [squares, setSquares] = useState([ ]);
+  const [squares, setSquares] = useState([]);
+  const [tryCounter, setTryCounter]= useState([]);
 
 const squarePacks = () =>{
     if (squares.length<=35){
@@ -20,7 +21,7 @@ const squarePacks = () =>{
   };
 };
 
-  squarePacks();
+ squarePacks();
 
 
   const clickSquare = id =>{
@@ -30,14 +31,25 @@ const squarePacks = () =>{
     square.className = 'White';
     squaresCopy[index] = square;
     setSquares(squaresCopy);
+    const counter = 0;
+    const tryCounterCopy = [...tryCounter];
+    tryCounterCopy.push(counter);
+    setTryCounter(tryCounterCopy);
   };
 
   const resetBtn = () =>{
     const squaresCopy = [...squares];
     squaresCopy.splice(0,squaresCopy.length);
     setSquares(squaresCopy);
+    const tryCounterCopy = [...tryCounter];
+    tryCounterCopy.splice(0,tryCounterCopy.length);
+    setTryCounter(tryCounterCopy);
     squarePacks();
   }
+
+  // const item = (
+   
+  // )
 
   const squareList = (
     squares.map(square=>(
@@ -45,10 +57,12 @@ const squarePacks = () =>{
       key={square.id}
       className={square.className}
       clickSquare={()=>clickSquare(square.id)}
-      >      
+      >     
       </Square>
     ))
   );
+
+
   
 
   return (
@@ -56,7 +70,7 @@ const squarePacks = () =>{
       <div className='Board'>
         {squareList}    
       </div>
-      <p>Tries:{tryCounter}</p>
+      <p>Tries:{tryCounter.length}</p>
       <p><button onClick={resetBtn}>Reset</button></p>
     </div>
   );
