@@ -2,3 +2,17 @@
   text-align: center;
 }
 
+.Board{
+  width: 640px;
+  display:flex;
+  margin: 10px auto;
+  flex-wrap:wrap;
+}
+
+.White{  
+  width: 100px;
+  height: 100px;  
+  background-color: transparent;
+  margin: 3px;
+};
+
