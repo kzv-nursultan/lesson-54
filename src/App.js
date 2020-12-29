@@ -12,12 +12,11 @@ const squarePacks = () =>{
       for (let i=0; i<36; i++){
         const newSquare = {};
         newSquare.className='squareBlock';
-        newSquare.hasItem = false;
         newSquare.id = i;
         squares.push(newSquare);
     }
     const randomIndex = Math.floor(Math.random()*36)
-    squares[randomIndex].hasItem = true;
+    squares[randomIndex].hasItem = '*';
   };
 };
 
@@ -47,16 +46,13 @@ const squarePacks = () =>{
     squarePacks();
   }
 
-  // const item = (
-   
-  // )
-
   const squareList = (
     squares.map(square=>(
       <Square 
       key={square.id}
       className={square.className}
       clickSquare={()=>clickSquare(square.id)}
+      hasItem={square.hasItem}
       >     
       </Square>
     ))
